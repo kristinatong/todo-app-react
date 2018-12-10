@@ -21,7 +21,11 @@ app.get('/', function(req, res) {
 });
 
 app.get('/todos', function(req, res) {
+  /*KT Begin: fixing todos json issue
   res.json(JSON.stringify(todos));
+  */
+  res.json(todos)
+  /*KT End: fixing todos json issue*/
 });
 
 app.get('/todos/:id', function(req, res) {

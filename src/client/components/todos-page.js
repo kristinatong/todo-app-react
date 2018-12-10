@@ -7,6 +7,7 @@ import Navbar from './navbar';
 import TodoForm from './todo-form';
 import TodoLink from './todo-link';
 import Todos from './todos';
+import Sumbar from './sumbar';  //KT: add summary bar
 
 /**
  * TodosPage component
@@ -101,9 +102,12 @@ class TodosPage extends React.Component {
    * @returns {ReactElement}
    */
   render() {
+    console.log('todos-page state', this.state) //kt
     return (
       <div className={this.baseCls}>
         <Navbar filterBy={this.state.filterBy} onClickFilter={this.setFilterBy} />
+        
+        <Sumbar /> {/*KT: add summary bar*/}
 
         <TodoForm onSubmit={this.addTodo} />
 
