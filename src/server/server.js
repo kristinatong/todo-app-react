@@ -1,83 +1,86 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var path = require('path');
+(function server(){
+  var counter = 3 //KT: added counter for unique IDs
+  var express = require('express');
+  var bodyParser = require('body-parser');
+  var path = require('path');
 
-var app = express();
-app.set('views', path.resolve('src', 'server', 'views'));
-app.set('view engine', 'ejs');
+  var app = express();
+  app.set('views', path.resolve('src', 'server', 'views'));
+  app.set('view engine', 'ejs');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
 
-var todos = [
-  {"id": 1, "text": "Hello, world!"},
-  {"id": 2, "text": "Pick up groceries", "status": "complete"}
-];
+  var todos = [
+    {"id": 1, "text": "Hello, world!"},
+    {"id": 2, "text": "Pick up groceries", "status": "complete"}
+  ];
 
-app.get('/', function(req, res) {
-  var bundle = `//${req.hostname}:8080/public/bundle.js`;
+  app.get('/', function(req, res) {
+    var bundle = `//${req.hostname}:8080/public/bundle.js`;
 
-  res.render('index', {bundle});
-});
-
-app.get('/todos', function(req, res) {
-  /*KT Begin: fixing todos json issue
-  res.json(JSON.stringify(todos));
-  */
-  res.json(todos)
-  /*KT End: fixing todos json issue*/
-});
-
-app.get('/todos/:id', function(req, res) {
-  var id = req.params.id;
-  var index = todos.findIndex(function(todo) {
-    return todo.id === id;
+    res.render('index', {bundle});
   });
 
-  res.json(JSON.stringify(todos[index]));
-});
+  app.get('/todos', function(req, res) {
+    /*KT Begin: fixing todos json issue
+    res.json(JSON.stringify(todos));
+    */
+    res.json(todos)
+    /*KT End: fixing todos json issue*/
+  });
 
-app.post('/todos', function(req, res) {
-  var text = req.body.data.text;
-  if (!text) {
-    return res.status(400).json({"message": "text is required"});
-  }
+  app.get('/todos/:id', function(req, res) {
+    var id = req.params.id;
+    var index = todos.findIndex(function(todo) {
+      return todo.id === id;
+    });
 
-  var id = todos.length + 1;
-  var newTodo = { "id": id, "text": text, "status": "active" };
-  todos.push(newTodo);
+    res.json(JSON.stringify(todos[index]));
+  });
 
-  res.json(todos);
-});
+  app.post('/todos', function(req, res) {
+    var text = req.body.data.text;
+    if (!text) {
+      return res.status(400).json({"message": "text is required"});
+    }
 
-app.delete('/todos/:id', function(req, res) {
-  /*KT Begin: update delete functionality*/
-  // res.status(500).send({"message": "not implemented"});
-  let id = parseInt(req.params.id)
-  let index = todos.findIndex(todo => todo.id === id)
-  res.json(todos[index])
-  todos.splice(index,1)
-  /*KT End: update delete functionality*/
-});
+    // var id = todos.length + 1; KT: added counter for unique IDs
+    var newTodo = { "id": counter++, "text": text, "status": "active" };
+    todos.push(newTodo);
 
-app.put('/todos/:id', function(req, res) {
-  /*KT Begin: adding summary bar*/
-  // res.status(500).send({"message": "not implemented"});
-  let id = parseInt(req.params.id)
-  let index = todos.findIndex(todo => todo.id === id)
-  todos[index].status = 'complete'
-  res.json(todos)
-  /*KT End: adding summary bar*/
-});
+    res.json(todos);
+  });
 
-// Node server.
-var port = 3000;
-var server = app.listen(port, function() {
-  console.log('SERVER STARTED LISTENING ON PORT ' + port);
-});
+  app.delete('/todos/:id', function(req, res) {
+    /*KT Begin: update delete functionality*/
+    // res.status(500).send({"message": "not implemented"});
+    let id = parseInt(req.params.id)
+    let index = todos.findIndex(todo => todo.id === id)
+    res.json(todos[index])
+    todos.splice(index,1)
+    /*KT End: update delete functionality*/
+  });
 
-// Dev server.
-var devServer = require('../../tools/development-server');
-var devPort = 8080;
+  app.put('/todos/:id', function(req, res) {
+    /*KT Begin: adding summary bar*/
+    // res.status(500).send({"message": "not implemented"});
+    let id = parseInt(req.params.id)
+    let index = todos.findIndex(todo => todo.id === id)
+    todos[index] = req.body.data
+    res.json(todos[index])
+    /*KT End: adding summary bar*/
+  });
 
-devServer.listen(devPort, '0.0.0.0', () => {});
+  // Node server.
+  var port = 3000;
+  var server = app.listen(port, function() {
+    console.log('SERVER STARTED LISTENING ON PORT ' + port);
+  });
+
+  // Dev server.
+  var devServer = require('../../tools/development-server');
+  var devPort = 8080;
+
+  devServer.listen(devPort, '0.0.0.0', () => {});
+})();

@@ -46,7 +46,8 @@ class TodosPage extends React.Component {
     this.postTodo = this.postTodo.bind(this);
     this.setFilterBy = this.setFilterBy.bind(this);
     this.updateTodos = this.updateTodos.bind(this);
-    this.completeAll = this.completeAll.bind(this); /*KT add summary bar*/
+    this.onClickComplete = this.onClickComplete.bind(this); /*KT add summary bar*/
+    this.updateSingleTodo = this.updateSingleTodo.bind(this) /*KT update PUT response todo*/
   }
 
   /**
@@ -98,10 +99,24 @@ class TodosPage extends React.Component {
     this.setState({ todos });
   }
 
+  updateSingleTodo(todo){
+    let index = this.state.todos.findIndex(el => el.id === todo.id)
+    debugger
+    this.setState({
+      todos: [
+        ...this.state.todos.slice(0, index),
+        todo,
+        ...this.state.todos.slice(index + 1),
+      ]
+    })
+  }
+
   /*KT Begin: add summary bar*/
-  completeAll() {
-    this.state.todos.filter(todo => todo.status !== 'complete').map(todo => {
-      api('PUT', todo, this.updateTodos)
+  onClickComplete() {
+    const updateTodos = [...this.state.todos.filter(todo => todo.status !== 'complete')]
+    updateTodos.map(todo => {
+      todo.status = 'complete'
+      api('PUT', todo, this.updateSingleTodo)
     })
   }
   /*KT End: add summary bar*/
@@ -116,7 +131,7 @@ class TodosPage extends React.Component {
       <div className={this.baseCls}>
         <Navbar filterBy={this.state.filterBy} onClickFilter={this.setFilterBy} />
 
-        <Sumbar onClickComplete={this.completeAll} active={this.state.todos.filter(todo => todo.status === 'active')}/> {/*KT: add summary bar*/}
+        <Sumbar onClickComplete={this.onClickComplete} active={this.state.todos.filter(todo => todo.status === 'active')}/> {/*KT: add summary bar*/}
 
         <TodoForm onSubmit={this.addTodo} />
 
