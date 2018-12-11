@@ -55,7 +55,13 @@ app.delete('/todos/:id', function(req, res) {
 });
 
 app.put('/todos/:id', function(req, res) {
-  res.status(500).send({"message": "not implemented"});
+  /*KT Begin: adding summary bar*/
+  // res.status(500).send({"message": "not implemented"});
+  let id = parseInt(req.params.id)
+  let index = todos.findIndex(todo => todo.id === id)
+  todos[index].status = 'complete'
+  res.json(todos)
+  /*KT End: adding summary bar*/
 });
 
 // Node server.

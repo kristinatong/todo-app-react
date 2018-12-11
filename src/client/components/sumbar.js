@@ -1,3 +1,4 @@
+/*KT Begin: add summary bar*/
 import React from 'react';
 
 const noop = () => {};
@@ -20,7 +21,7 @@ const defaultProps = {
  * Navbar component
  * @returns {ReactElement}
  */
-const Sumbar = () => {
+const Sumbar = ({active, onClickComplete}) => {
   /**
    * Base CSS class
    */
@@ -28,7 +29,8 @@ const Sumbar = () => {
 
   return (
     <div className={baseCls}>
-    summary bar
+      {active.length} tasks remaining
+      <a onClick={onClickComplete}>Complete All</a>
     </div>
   );
 }
@@ -37,3 +39,4 @@ Sumbar.propTypes = propTypes;
 Sumbar.defaultProps = defaultProps;
 
 export default Sumbar;
+/*KT End: add summary bar*/
