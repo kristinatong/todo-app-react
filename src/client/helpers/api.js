@@ -47,7 +47,6 @@ export function getApiPromise(method, data) {
 
   return fetch(url, options)
   .then(response => {
-    console.log(response)
     if (response.status >= 400) {
       return response.json().then(err => Promise.reject(err.message));
     }

@@ -51,7 +51,13 @@ app.post('/todos', function(req, res) {
 });
 
 app.delete('/todos/:id', function(req, res) {
-  res.status(500).send({"message": "not implemented"});
+  /*KT Begin: update delete functionality*/
+  // res.status(500).send({"message": "not implemented"});
+  let id = parseInt(req.params.id)
+  let index = todos.findIndex(todo => todo.id === id)
+  res.json(todos[index])
+  todos.splice(index,1)
+  /*KT End: update delete functionality*/
 });
 
 app.put('/todos/:id', function(req, res) {
