@@ -101,7 +101,6 @@ class TodosPage extends React.Component {
 
   updateSingleTodo(todo){
     let index = this.state.todos.findIndex(el => el.id === todo.id)
-    debugger
     this.setState({
       todos: [
         ...this.state.todos.slice(0, index),
@@ -127,8 +126,9 @@ class TodosPage extends React.Component {
    */
   render() {
     console.log('todos-page state', this.state) //kt
+    console.log(TodosPage.baseCls)
     return (
-      <div className={this.baseCls}>
+      <div className={TodosPage.baseCls}>
         <Navbar filterBy={this.state.filterBy} onClickFilter={this.setFilterBy} />
 
         <Sumbar onClickComplete={this.onClickComplete} active={this.state.todos.filter(todo => todo.status === 'active')}/> {/*KT: add summary bar*/}

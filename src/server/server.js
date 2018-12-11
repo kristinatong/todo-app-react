@@ -1,5 +1,5 @@
 (function server(){
-  var counter = 3 //KT: added counter for unique IDs
+  var counter = 3 /*KT: added counter for unique IDs*/
   var express = require('express');
   var bodyParser = require('body-parser');
   var path = require('path');
@@ -45,7 +45,7 @@
       return res.status(400).json({"message": "text is required"});
     }
 
-    // var id = todos.length + 1; KT: added counter for unique IDs
+    // var id = todos.length + 1; /*KT: added counter for unique IDs*/
     var newTodo = { "id": counter++, "text": text, "status": "active" };
     todos.push(newTodo);
 

@@ -1,6 +1,7 @@
 // Global layout.
 body {
   background: map-get($colors, ui-light);
+  height: 100%;
 }
 
 .container {
@@ -12,4 +13,8 @@ body {
 
 .display-none {
   display: none !important;
+}
+
+html {
+  height: 100%;
 }
