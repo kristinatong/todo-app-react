@@ -1,5 +1,16 @@
 // Header module
 .header {
   background-color: map-get($colors, primary);
-  flex-grow: 1;
+  padding: 2% 5% 2% 5%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 10px;
+}
+
+.header > a {
+  grid-column: 1;
+  color: white;
+  font-size: x-large;
+  font-family: Arial;
+  font-weight: 100;
 }

@@ -26,11 +26,12 @@ const Sumbar = ({active, onClickComplete}) => {
    * Base CSS class
    */
   const baseCls = 'sumbar'
+  const remainCls = `${baseCls}__item`
 
   return (
     <div className={baseCls}>
-      {active.length} tasks remaining
-      <a onClick={onClickComplete}>Complete All</a>
+      <span className={remainCls}>{active.length} tasks remaining</span>
+      <a className={remainCls} onClick={onClickComplete}>Complete All</a>
     </div>
   );
 }

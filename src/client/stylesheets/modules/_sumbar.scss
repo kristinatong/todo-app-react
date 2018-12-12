@@ -1,0 +1,26 @@
+// Sumbar module
+.sumbar {
+  padding: 2% 5% 2% 5%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 10px;
+  grid-column: span 12;
+
+  > span {
+    font-family: Arial;
+    font-size: medium;
+    color: map-get($colors, darkgray);
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
+  > a {
+    font-family: Arial;
+    font-size: small;
+    font-weight: bold;
+    color: map-get($colors, primary);
+    grid-column-start: 3;
+    grid-column-end: 5;
+  }
+
+}

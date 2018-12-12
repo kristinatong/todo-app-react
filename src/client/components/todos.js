@@ -129,9 +129,9 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
   }
 
   return (
-    <ul className={baseCls}>
+    <div className={baseCls}>
       {renderTodos()}
-    </ul>
+    </div>
   )
 };
 

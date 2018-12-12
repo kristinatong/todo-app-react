@@ -1,0 +1,22 @@
+.todo-form {
+  padding: 1% 5% 1% 5%;
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.todo-form > input {
+  grid-column-start: 4;
+  grid-column-end: 9;
+  padding: 10px 20px;
+  // display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: large;
+  color: map-get($colors, darkgray);
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: map-get($colors, gray);
+}

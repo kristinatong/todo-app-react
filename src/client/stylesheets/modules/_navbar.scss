@@ -1,11 +1,23 @@
 // Navbar module
 .navbar {
-    
+  background-color: map-get($colors, lightgray);
+  padding: 1% 5% 1% 5%;
+  // display: grid;
+  // grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 10px;
+  grid-column: span 12;
+
   &__item {
     text-decoration: none;
+    font-family: Arial;
+    font-size: small;
+    font-weight: 700;
+    color: map-get($colors, gray);
+    margin-right: 2%;
   }
 
   &__item--active {
-    font-weight: 700;
+    // font-weight: 700;
+    color: map-get($colors, darkgray);
   }
 }

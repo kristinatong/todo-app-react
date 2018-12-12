@@ -66,7 +66,7 @@ class TodoForm extends React.Component {
    */
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className={TodoForm.baseCls} onSubmit={this.onSubmit}>
         <input
           onChange={this.onChange}
           placeholder="Add new todo..."

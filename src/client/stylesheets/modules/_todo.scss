@@ -1,12 +1,61 @@
 // Todo module.
+.todos {
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-row-gap: 15px;
+  grid-column-gap: 10px;
+}
+
 .todo {
+  grid-column: span 12;
+  margin: 0% 5% 0% 5%;
+  padding-bottom: 2%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  border-bottom: 1px solid map-get($colors, lightgray);
+  color: map-get($colors, darkgray);
+
   cursor: pointer;
 
   &--status-complete {
-    text-decoration: line-through;
+    text-decoration: line-through solid map-get($colors, gray);
+    color: map-get($colors, lightgray);
   }
 
   &--filtered {
     display: none;
   }
+}
+
+.todo-link {
+  grid-column-start: 2;
+  grid-column-end: 10;
+  font-size: x-large;
+  font-family: Arial;
+}
+
+.checkbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.checkbox > input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  height: 20px;
+  width: 20px;
+  background-color: map-get($colors, lightgray);
 }

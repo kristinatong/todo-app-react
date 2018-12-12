@@ -24,7 +24,7 @@ const defaultProps = {
  * Link component
  * @returns {ReactElement}
  */
-const TodoLink = ({ text, onClick }) => {
+const TodoLink = ({ text, onClick, status }) => {
   /**
    * Base CSS class
    */

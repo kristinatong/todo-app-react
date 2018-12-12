@@ -43,12 +43,32 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text }) => {
     + (status === 'complete' ? ' todo--status-complete' : '')
     + (filtered ? ' todo--filtered' : '');
 
-  return (
-    <li className={todoCls}>
-      <TodoLink text={text} onClick={onClickTodo} />
+  const checked = () => (status === 'complete' ? true : false)
 
-      <Button text="Delete" onClick={onClickDelete} />
-    </li>
+  // return (
+  //   <div className={todoCls}>
+  //     <TodoLink text={text} onClick={onClickTodo} />
+  //
+  //     <Button text="Delete" onClick={onClickDelete} />
+  //   </div>
+  // );
+  // return (
+  //   <div className={todoCls}>
+  //   <div className="checkbox">
+  //     <input type="checkbox" checked={checked()} onChange={onClickTodo}/>
+  //     <span className="checkmark"/>
+  //   </div>
+  //     <TodoLink text={text} status={status} onClick={onClickTodo}/>
+  //     <span className="close hairline"/>
+  //   </div>
+  // );
+
+  return (
+    <div className={todoCls}>
+      <input type="checkbox" checked={checked()} onChange={onClickTodo}/>
+      <TodoLink text={text} status={status} onClick={onClickTodo}/>
+      <span className="close hairline"/>
+    </div>
   );
 }
 
