@@ -66,8 +66,9 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text }) => {
   return (
     <div className={todoCls}>
       <input type="checkbox" checked={checked()} onChange={onClickTodo}/>
-      <TodoLink text={text} status={status} onClick={onClickTodo}/>
-      <span className="close hairline"/>
+      <TodoLink text={text} status={status} onClick={onClickTodo}>
+        <Button text="Archive"/>
+      </TodoLink>
     </div>
   );
 }

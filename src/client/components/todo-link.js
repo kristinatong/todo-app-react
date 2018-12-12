@@ -30,8 +30,11 @@ const TodoLink = ({ text, onClick, status }) => {
    */
   const baseCls = 'todo-link';
 
+  const todoCls = baseCls
+    + (status === 'complete' ? ' todo-link--status-complete' : '')
+
   return (
-    <div className={baseCls} onClick={onClick}>
+    <div className={todoCls} onClick={onClick}>
       {text}
     </div>
   );

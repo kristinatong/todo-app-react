@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Button from './button';
 
 const noop = () => {};
 
@@ -59,6 +60,7 @@ const Navbar = ({ filterBy, onClickFilter }) => {
       >
         Completed
       </span>
+      <Button text="Archive all completed"/>
     </div>
   );
 }

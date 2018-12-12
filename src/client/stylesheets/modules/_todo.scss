@@ -10,7 +10,7 @@
 .todo {
   grid-column: span 12;
   margin: 0% 5% 0% 5%;
-  padding-bottom: 2%;
+  padding: 1% 0% 2% 0%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   border-bottom: 1px solid map-get($colors, lightgray);
@@ -18,10 +18,10 @@
 
   cursor: pointer;
 
-  &--status-complete {
-    text-decoration: line-through solid map-get($colors, gray);
-    color: map-get($colors, lightgray);
-  }
+  // &--status-complete {
+  //   text-decoration: line-through solid map-get($colors, gray);
+  //   color: map-get($colors, lightgray);
+  // }
 
   &--filtered {
     display: none;
@@ -29,10 +29,17 @@
 }
 
 .todo-link {
-  grid-column-start: 2;
-  grid-column-end: 10;
   font-size: x-large;
   font-family: Arial;
+
+  &--status-complete {
+    text-decoration: line-through solid map-get($colors, gray);
+    color: map-get($colors, lightgray);
+  }
+}
+
+.todo-link > button {
+
 }
 
 .checkbox {

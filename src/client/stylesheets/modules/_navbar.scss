@@ -21,3 +21,7 @@
     color: map-get($colors, darkgray);
   }
 }
+
+.navbar > button {
+  float: right;
+}
