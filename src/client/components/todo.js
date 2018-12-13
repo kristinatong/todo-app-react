@@ -41,19 +41,8 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, onClickArchive, archive, s
   const todoCls = baseCls
     + (status === 'complete' ? ' todo--status-complete' : '')
     + (filtered ? ' todo--filtered' : '');
-
+  
   const checked = () => (status === 'complete' ? true : false)
-
-  // return (
-  //   <div className={todoCls}>
-  //   <div className="checkbox">
-  //     <input type="checkbox" checked={checked()} onChange={onClickTodo}/>
-  //     <span className="checkmark"/>
-  //   </div>
-  //     <TodoLink text={text} status={status} onClick={onClickTodo}/>
-  //     <span className="close hairline"/>
-  //   </div>
-  // );
 
   return (
     <div className={todoCls}>

@@ -1,4 +1,4 @@
-/*KT Begin: add summary bar*/
+/*adding summary bar component*/
 import React from 'react';
 
 const noop = () => {};
@@ -41,4 +41,3 @@ Sumbar.propTypes = propTypes;
 Sumbar.defaultProps = defaultProps;
 
 export default Sumbar;
-/*KT End: add summary bar*/

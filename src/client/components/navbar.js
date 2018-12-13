@@ -38,6 +38,7 @@ const Navbar = ({ filterBy, onClickFilter, onClickArchiveAll }) => {
   let completedLinkCls = `${baseCls}__item`;
   completedLinkCls += filterBy === 'completed' ? ` ${baseCls}__item--active` : '';
 
+  //archived className
   let archivedLinkCls = `${baseCls}__item`;
   archivedLinkCls += filterBy === 'archived' ? ` ${baseCls}__item--active` : '';
 
@@ -63,6 +64,7 @@ const Navbar = ({ filterBy, onClickFilter, onClickArchiveAll }) => {
       >
         Completed
       </span>
+      {/*adding archived link*/}
       <span
         className={archivedLinkCls}
         onClick={() => onClickFilter('archived')}

@@ -1,5 +1,5 @@
 (function server(){
-  var counter = 3 /*KT: added counter for unique IDs*/
+  var counter = 3 /*added counter for unique IDs*/
   var express = require('express');
   var bodyParser = require('body-parser');
   var path = require('path');
@@ -23,11 +23,10 @@
   });
 
   app.get('/todos', function(req, res) {
-    /*KT Begin: fixing todos json issue
+    /*fixing todos json issue
     res.json(JSON.stringify(todos));
     */
     res.json(todos)
-    /*KT End: fixing todos json issue*/
   });
 
   app.get('/todos/:id', function(req, res) {
@@ -45,7 +44,7 @@
       return res.status(400).json({"message": "text is required"});
     }
 
-    // var id = todos.length + 1; /*KT: added counter for unique IDs*/
+    // var id = todos.length + 1; /*added counter for unique IDs*/
     var newTodo = { "id": counter++, "text": text, "status": "active", "archive": false };
     todos.push(newTodo);
 
@@ -53,23 +52,21 @@
   });
 
   app.delete('/todos/:id', function(req, res) {
-    /*KT Begin: update delete functionality*/
+    /*update delete functionality*/
     // res.status(500).send({"message": "not implemented"});
     let id = parseInt(req.params.id)
     let index = todos.findIndex(todo => todo.id === id)
     res.json(todos[index])
     todos.splice(index,1)
-    /*KT End: update delete functionality*/
   });
 
   app.put('/todos/:id', function(req, res) {
-    /*KT Begin: adding summary bar*/
+    /*adding summary bar*/
     // res.status(500).send({"message": "not implemented"});
     let id = parseInt(req.params.id)
     let index = todos.findIndex(todo => todo.id === id)
     todos[index] = req.body.data
     res.json(todos[index])
-    /*KT End: adding summary bar*/
   });
 
   // Node server.

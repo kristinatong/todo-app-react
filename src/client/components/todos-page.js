@@ -111,7 +111,7 @@ class TodosPage extends React.Component {
     })
   }
 
-  /*KT Begin: add summary bar*/
+  /*add summary bar*/
   onClickComplete() {
     const updateTodos = [...this.state.todos.filter(todo => todo.status !== 'complete')]
     updateTodos.map(todo => {
@@ -119,8 +119,8 @@ class TodosPage extends React.Component {
       api('PUT', todo, this.updateSingleTodo)
     })
   }
-  /*KT End: add summary bar*/
 
+  /*click archive all function*/
   onClickArchiveAll() {
     const newTodos = [...this.state.todos]
     newTodos.map(todo => {
@@ -136,8 +136,6 @@ class TodosPage extends React.Component {
    * @returns {ReactElement}
    */
   render() {
-    console.log('todos-page state', this.state) //kt
-    console.log(TodosPage.baseCls)
     return (
       <div className={TodosPage.baseCls}>
         <Navbar filterBy={this.state.filterBy} onClickFilter={this.setFilterBy} onClickArchiveAll={this.onClickArchiveAll}/>
