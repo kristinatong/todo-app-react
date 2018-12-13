@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from './button';
 
 const noop = () => {};
 
@@ -24,7 +25,7 @@ const defaultProps = {
  * Link component
  * @returns {ReactElement}
  */
-const TodoLink = ({ text, onClick, status }) => {
+const TodoLink = ({ text, onClickTodo, onClickArchive, status, archive }) => {
   /**
    * Base CSS class
    */
@@ -34,8 +35,10 @@ const TodoLink = ({ text, onClick, status }) => {
     + (status === 'complete' ? ' todo-link--status-complete' : '')
 
   return (
-    <div className={todoCls} onClick={onClick}>
-      {text}
+    <div className={baseCls}>
+      <span className={todoCls} onClick={archive === false ? onClickTodo : null}>{text}</span>
+      {status === 'complete' && archive === false ? <Button text="Archive" onClick={onClickArchive}/> : null }
+      {archive === true ? <button className="archived" disabled>Archived</button> : null }
     </div>
   );
 };

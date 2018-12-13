@@ -31,6 +31,7 @@
 .todo-link {
   font-size: x-large;
   font-family: Arial;
+  grid-column: span 10;
 
   &--status-complete {
     text-decoration: line-through solid map-get($colors, gray);
@@ -39,7 +40,7 @@
 }
 
 .todo-link > button {
-
+  margin-left: 10px;
 }
 
 .checkbox {
@@ -65,4 +66,16 @@
   height: 20px;
   width: 20px;
   background-color: map-get($colors, lightgray);
+}
+
+.archived {
+  background-color: map-get($colors, lightgray);
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  font-family: Arial;
+  font-size: small;
+  border-radius: 4px;
 }

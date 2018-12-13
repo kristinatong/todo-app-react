@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Button from './button';
 import TodoLink from './todo-link';
 
@@ -33,7 +32,7 @@ const defaultProps = {
  * Todo component
  * @returns {ReactElement}
  */
-const Todo = ({ filtered, onClickDelete, onClickTodo, status, text }) => {
+const Todo = ({ filtered, onClickDelete, onClickTodo, onClickArchive, archive, status, text }) => {
   /**
    * Base CSS class
    */
@@ -45,13 +44,6 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text }) => {
 
   const checked = () => (status === 'complete' ? true : false)
 
-  // return (
-  //   <div className={todoCls}>
-  //     <TodoLink text={text} onClick={onClickTodo} />
-  //
-  //     <Button text="Delete" onClick={onClickDelete} />
-  //   </div>
-  // );
   // return (
   //   <div className={todoCls}>
   //   <div className="checkbox">
@@ -66,9 +58,8 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text }) => {
   return (
     <div className={todoCls}>
       <input type="checkbox" checked={checked()} onChange={onClickTodo}/>
-      <TodoLink text={text} status={status} onClick={onClickTodo}>
-        <Button text="Archive"/>
-      </TodoLink>
+      <TodoLink text={text} status={status} archive={archive} onClickTodo={onClickTodo} onClickArchive={onClickArchive}/>
+      <Button text="Delete" onClick={onClickDelete} />
     </div>
   );
 }

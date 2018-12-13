@@ -48,6 +48,7 @@ class TodosPage extends React.Component {
     this.updateTodos = this.updateTodos.bind(this);
     this.onClickComplete = this.onClickComplete.bind(this); /*KT add summary bar*/
     this.updateSingleTodo = this.updateSingleTodo.bind(this) /*KT update PUT response todo*/
+    this.onClickArchiveAll = this.onClickArchiveAll.bind(this)
   }
 
   /**
@@ -120,6 +121,16 @@ class TodosPage extends React.Component {
   }
   /*KT End: add summary bar*/
 
+  onClickArchiveAll() {
+    const newTodos = [...this.state.todos]
+    newTodos.map(todo => {
+      if(todo.archive === false && todo.status === 'complete'){
+        todo.archive = true
+        api('PUT', todo, this.updateSingleTodo)
+      }
+    })
+  }
+
   /**
    * Render
    * @returns {ReactElement}
@@ -129,7 +140,7 @@ class TodosPage extends React.Component {
     console.log(TodosPage.baseCls)
     return (
       <div className={TodosPage.baseCls}>
-        <Navbar filterBy={this.state.filterBy} onClickFilter={this.setFilterBy} />
+        <Navbar filterBy={this.state.filterBy} onClickFilter={this.setFilterBy} onClickArchiveAll={this.onClickArchiveAll}/>
 
         <Sumbar onClickComplete={this.onClickComplete} active={this.state.todos.filter(todo => todo.status === 'active')}/> {/*KT: add summary bar*/}
 

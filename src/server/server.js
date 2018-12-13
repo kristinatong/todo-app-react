@@ -12,8 +12,8 @@
   app.use(bodyParser.urlencoded({ extended: true }));
 
   var todos = [
-    {"id": 1, "text": "Hello, world!"},
-    {"id": 2, "text": "Pick up groceries", "status": "complete"}
+    {"id": 1, "text": "Hello, world!", "archive": false, "status": "active"},  //added status and archive as required field
+    {"id": 2, "text": "Pick up groceries", "status": "complete", "archive": false} //added archived as required field
   ];
 
   app.get('/', function(req, res) {
