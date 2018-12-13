@@ -46,7 +46,7 @@
     }
 
     // var id = todos.length + 1; /*KT: added counter for unique IDs*/
-    var newTodo = { "id": counter++, "text": text, "status": "active" };
+    var newTodo = { "id": counter++, "text": text, "status": "active", "archive": false };
     todos.push(newTodo);
 
     res.json(todos);

@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <div className={baseCls}>
-      <Link to="/">MyTodos</Link>
+      <Link className="test" to="/">MyTodos</Link>
     </div>
   )
 };

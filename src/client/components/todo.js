@@ -57,9 +57,9 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, onClickArchive, archive, s
 
   return (
     <div className={todoCls}>
-      <input type="checkbox" checked={checked()} onChange={onClickTodo}/>
+      <input type="checkbox" checked={checked()} onChange={onClickTodo} />
       <TodoLink text={text} status={status} archive={archive} onClickTodo={onClickTodo} onClickArchive={onClickArchive}/>
-      <Button text="Delete" onClick={onClickDelete} />
+      <span className="close" onClick={onClickDelete}/>
     </div>
   );
 }
