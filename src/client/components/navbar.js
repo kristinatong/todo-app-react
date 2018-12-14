@@ -52,25 +52,28 @@ const Navbar = ({ filterBy, onClickFilter, onClickArchiveAll }) => {
       >
         All
       </Link>
-      <span
+      <Link
+        to="/active"
         className={activeLinkCls}
         onClick={() => onClickFilter('active')}
       >
         Active
-      </span>
-      <span
+      </Link>
+      <Link
+        to="/completed"
         className={completedLinkCls}
         onClick={() => onClickFilter('completed')}
       >
         Completed
-      </span>
+      </Link>
       {/*adding archived link*/}
-      <span
+      <Link
+        to="/archived"
         className={archivedLinkCls}
         onClick={() => onClickFilter('archived')}
       >
         Archived
-      </span>
+      </Link>
       <Button text="Archive all completed" onClick={onClickArchiveAll}/>
     </div>
   );

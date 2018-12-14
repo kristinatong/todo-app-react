@@ -38,6 +38,13 @@
     res.json(JSON.stringify(todos[index]));
   });
 
+  //route to active, completed, archived paths
+  app.get('/*', function(req, res) {
+    var bundle = `//${req.hostname}:8080/public/bundle.js`;
+
+    res.render('index', {bundle});
+  })
+
   app.post('/todos', function(req, res) {
     var text = req.body.data.text;
     if (!text) {

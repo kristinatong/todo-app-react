@@ -39,7 +39,8 @@ class TodosPage extends React.Component {
 
     this.state = {
       todos: [],
-      filterBy: props.params.filter,
+      // filterBy: props.params.filter,
+      filterBy: props.location.pathname.slice(1) //update for routing
     };
 
     this.addTodo = this.addTodo.bind(this);
