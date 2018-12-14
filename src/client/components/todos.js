@@ -91,6 +91,9 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
   const onClickTodo = todo => {
     const newTodo = Object.assign({}, todo);
     newTodo.status = todo.status === 'complete' ? 'active' : 'complete';
+    if(newTodo.status === 'active' && newTodo.archive === true){
+      newTodo.archive = false
+    }
 
     api('PUT', newTodo, putTodo);
   }
